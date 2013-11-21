@@ -1,3 +1,2 @@
-<? phpinfo(); ?>
 
 STUFF!
