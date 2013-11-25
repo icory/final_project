@@ -9,3 +9,8 @@
     <li><a href="requests.php">Admin View</a></li>
   </ul>
 </nav>
+
+<ul>
+  <li>(+1)XXX-XXX-XXXX</li>
+  <li>info@company.org</li>
+</ul>

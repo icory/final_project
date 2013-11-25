@@ -1,3 +1,3 @@
 <footer>
-  <h3>Footer</strong></h3>
+  <p>Professional web design by Isaiah Cory</p>
 </footer>

@@ -4,13 +4,32 @@
 
 <?php include ('header.php'); ?>
 
-<section id="" class="twelve columns">
-  <h1>Main Title</h1>
-  <p>What ever you want to say goes here</p>
+<section>
+  <figure><img src="" alt="banner" ></figure>
+  <ul>
+    <li><a href="">Translation Services</a></li>
+    <li><a href="">Interpretation Services</a></li>
+  </ul>
 </section>
 
-<section class="twelve columns">
-  <h2>Extra info</h2>
+<section>
+  <h2>Trainings</h2>
+    <ul>
+      <li>
+        <strong>Training Title</strong>
+        <p>Date | Time</p>
+        <p>Location</p>
+        <p>More details</p>
+      </li>
+    </ul>
+</section>
+
+<section>
+  <h2>News & Articles</h2>
+    <article>
+     <strong>Article Title</strong>
+     <p>Here are the first several characters of text. [More...]</p>
+    </article>
 </section>
 
 <?php include ('footer.php'); ?>

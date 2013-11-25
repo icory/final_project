@@ -4,7 +4,7 @@ body { font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Tahoma, "Lucid
 
 /* -------------------- :: Typography -------------------- */
 
-h1, h2, h3, h4, h5 { margin-top: 5px; color: #333; }
+h1, h2, h3, h4, h5 { margin-top: 5px; color: ; }
 h1 { font-size: 3em; font-weight: bold; margin: ; }
 h2 { font-size: 2em; font-weight: bold; margin-bottom: 0;}
 h3 { font-size: 1.75em; font-weight: bold; margin-bottom: 0; }
