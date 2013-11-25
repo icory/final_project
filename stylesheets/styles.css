@@ -1,0 +1,80 @@
+* { padding: 0; margin: 0; }
+body { background: ; }
+body { font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Tahoma, "Lucida Grande", Arial, sans-serif; font-size: 100%; font-size: 1em; -webkit-font-smoothing: antialiased; }
+
+/* -------------------- :: Typography -------------------- */
+
+h1, h2, h3, h4, h5 { margin-top: 5px; color: #333; }
+h1 { font-size: 3em; font-weight: bold; margin: ; }
+h2 { font-size: 2em; font-weight: bold; margin-bottom: 0;}
+h3 { font-size: 1.75em; font-weight: bold; margin-bottom: 0; }
+h4 { font-size: 1.50em; font-weight: bold; margin-bottom: 0; }
+h5 { font-size: 1.25em; margin-bottom: 0; }
+
+/* -------------------- :: Links -------------------- */
+a {}
+
+
+/* -------------------- :: Images -------------------- */
+img.flex { max-width: 100%; }
+a img { border: 0; }
+
+/* -------------------- :: Rows & Columns -------------------- */
+.row { width:100%;min-height:1px;clear:both;display:block;}
+.row .twelve { width: 98.0%; }
+.row .eleven { width: 89.6% }
+.row .ten { width: 81.3% }
+.row .nine { width: 72.9% }
+.row .eight { width: 64.7% }
+.row .seven { width: 56.3% }
+.row .six { width: 48.0% }
+.row .five { width: 39.6% }
+.row .four { width: 31.3% }
+.row .three { width: 22.9% }
+.row .two { width:14.7% }
+.row .one { width: 6.3% }
+
+.col {max-width:100%;min-height:1px;margin:0 1.5% 0 0;display:inline;float:left;}
+.clearfix:before, .clearfix:after, .row:before, .row:after {content:'\0020';display:block;overflow:hidden;visibility:hidden;width:0;height:0;}
+
+/* -------------------- :: Top Bar / Navigation -------------------- */
+nav { }
+nav li { }
+nav li a { }
+nav li a:hover { }
+
+/* -------------------- :: Header -------------------- */
+header { }
+
+/* -------------------- :: Footer -------------------- */
+footer { }
+
+/* -------------------- :: Forms -------------------- */
+form { margin:1em 0; }
+
+fieldset { border: 0; }
+fieldset label { margin-right: 10px; }
+
+input:not([type=submit]):not([type=checkbox]):not([type=radio]) {border:5px solid white;-webkit-box-shadow:inset 0 0 8px  rgba(0,0,0,0.1),0 0 16px rgba(0,0,0,0.1); -moz-box-shadow:inset 0 0 8px  rgba(0,0,0,0.1),0 0 16px rgba(0,0,0,0.1);box-shadow:inset 0 0 8px  rgba(0,0,0,0.1),0 0 16px rgba(0,0,0,0.1);padding:10px;background: rgba(255,255,255,0.5);margin: 5px 0 10px 0px;}
+input[type=submit]{border:5px solid white !important;box-shadow:inset 0 0 8px  rgba(0,0,0,0.1),0 0 16px rgba(0,0,0,0.1) !important;padding:10px !important;background:rgba(255,255,255,0.5) !important;}
+input[type=submit]:hover{background:rgba(145,5,55,0.5) !important;}
+input[type=checkbox]{margin:5px 0;width:20px;height:20px;}
+input[type=radio]{margin:5px 0;width:20px;height:20px;}
+select#lstPostCategory{border:0 !important;background:none;font-size:1em;color:#FF6600;}
+textarea{width:100%;height:250px;border:5px solid white;-webkit-box-shadow:inset 0 0 8px  rgba(0,0,0,0.1),0 0 16px rgba(0,0,0,0.1);-moz-box-shadow:inset 0 0 8px  rgba(0,0,0,0.1),0 0 16px rgba(0,0,0,0.1);box-shadow:inset 0 0 8px  rgba(0,0,0,0.1),0 0 16px rgba(0,0,0,0.1);padding:10px;background: rgba(255,255,255,0.5);margin: 5px 0 10px 0px;}
+
+
+
+/* -------------------- :: Devices -------------------- */
+
+@media only screen and (max-width: 768px) {
+body{ }
+.hide-on-tablets {display:none !important;}
+.row .full-on-tablet {width:98.0%;border:0;max-width:none;}
+}
+
+@media only screen and (max-device-width: 768px) and (min-device-width: 400px) {
+body{ }
+.hide-on-tablets {display:none !important;}
+.row .full-on-tablet {width:98.0%;border:0;max-width:none;}
+}

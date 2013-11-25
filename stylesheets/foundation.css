@@ -930,9 +930,9 @@ div.panel {
    	Nav Bar with Dropdowns
 	-------------------------------------------------- */
 	
-.nav-bar { height: 65px; margin: 0 auto; padding-bottom: 0; font-size: 130%; font-weight: bold; }
+.nav-bar { height: 65px; margin: 0 auto; padding-bottom: 0; }
 
-.nav-bar>li>a { color: #fff; margin-right: 35px; display: inline; }	
+.nav-bar>li>a { color: #fff; padding: 10px 25px; display: inline; border-right: 1px solid #000; background-color: green; }	
 	
 .nav-bar>li { float: left; display: block; position: relative; padding: 20px 0 0 0; margin: auto; line-height: 35px; height: 65px; }
 	
