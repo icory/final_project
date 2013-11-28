@@ -28,8 +28,12 @@
       <option value="Ms.">Ms.</option>
       </select>
 
-      <label for="txtName">Name</label>
-      <input type="name" id="txtName" name="txtName" placeholder="Preferred Name">
+      <label for="txtFirstName">First Name</label>
+      <input type="name" id="txtFirstName" name="txtFirstName" placeholder="Preferred Name">
+      <br>
+
+      <label for="txtLastName">Last Name</label>
+      <input type="name" id="txtLastName" name="txtLastName" placeholder="">
       <br>
 
       <label for="txtOrganization">Organization</label>
