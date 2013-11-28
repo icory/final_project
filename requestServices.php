@@ -6,8 +6,8 @@
 
 <section>
   <ul>
-    <li><a href="">Translation Services</a></li>
-    <li><a href="">Interpretation Services</a></li>
+    <li><a href="requestTranslation.php">Translation Services</a></li>
+    <li><a href="requestInterpretation.php">Interpretation Services</a></li>
   </ul>
 </section>
 

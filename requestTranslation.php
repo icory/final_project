@@ -129,8 +129,8 @@
       <input type="number" id="numDocumentWordCount" name="numWordCount" placeholder="">
       <br>
 
-      <label for="datDatepicker">Date Required</label>
-      <input type="date" id="datDatepicker" name="datDatepicker" placeholder="MM-DD-YYYY">
+      <label for="datepicker">Date Required</label>
+      <input type="date" id="datepicker" name="datepicker" placeholder="MM-DD-YYYY">
       <br>
 
       <label for="uplDocUpload">Upload (optional)</label>
