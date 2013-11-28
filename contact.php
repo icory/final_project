@@ -97,12 +97,20 @@
       <input type="text" id="txtProvince" name="txtProvince" placeholder="">
       <br>
 
+      <label for="txtCountry">Country</label>
+      <input type="text" id="txtCountry" name="txtCountry" placeholder="">
+      <br>
+
       <label for="txtPostalCode">Postal Code</label>
       <input type="text" id="txtPostalCode" name="txtPostalCode" placeholder="">
       <br>
 
       <label for="emlEmail">Email</label>
       <input type="email" id="emlEmail" name="emlEmail" placeholder="">
+      <br>
+
+      <label for="telPhone">Phone</label>
+      <input type="tel" id="telPhone" name="telPhone" placeholder="">
       <br>
 
       <label for="txtSubject">Subject</label>

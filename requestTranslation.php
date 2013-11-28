@@ -113,9 +113,6 @@
       <input type="email" id="emlEmail" name="emlEmail" placeholder="">
       <br>
 
-      <label for="txtComment">Comment</label>
-      <textarea id="txtComment" name="txtComment" wrap="physical" placeholder="Write your comment or inquiry here."></textarea>
-
     </fieldset>
 
     <fieldset>
@@ -145,7 +142,13 @@
     </fieldset>
 
     <fieldset>
-       <legend>Step 3: Submit Request</legend>
+      <legend>Step 3: Additional Comments</legend>
+      <label for="txtComment">Comment</label>
+      <textarea id="txtComment" name="txtComment" wrap="physical" placeholder=""></textarea>
+    </fieldset>
+
+    <fieldset>
+       <legend>Step 4: Submit Request</legend>
 	<input type="submit" id="btnSubmit" name="btnSubmit" value="Submit" tabindex="">
     </fieldset>
 
