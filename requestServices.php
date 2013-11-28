@@ -14,25 +14,25 @@
 <section id="">
   <h2>Translation Services</h2>
     <ul class="">
-      <li>Service #1</li>
-      <li>Service #2</li>
-      <li>Service #3</li>
-      <li>Service #4</li>
-      <li>Service #5</li>
+      <li>Detail #1</li>
+      <li>Detail #2</li>
+      <li>Detail #3</li>
+      <li>Detail #4</li>
+      <li>Detail #5</li>
     </ul>
-    <a href="">Request translation services</a>
+    <a href="requestTranslation.php">Request a free quote for translation services</a>
 </section>
 
 <section id="">
   <h2>Interpretation Services</h2>
     <ul class="">
-      <li>Service #1</li>
-      <li>Service #2</li>
-      <li>Service #3</li>
-      <li>Service #4</li>
-      <li>Service #5</li>
+      <li>Detail #1</li>
+      <li>Detail #2</li>
+      <li>Detail #3</li>
+      <li>Detail #4</li>
+      <li>Detail #5</li>
     </ul>
-    <a href="">Request interpretation services</a>
+    <a href="requestInterpretation.php">Request interpretation services</a>
 </section>
 
 <section>

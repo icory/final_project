@@ -5,9 +5,17 @@
 <?php include ('header.php'); ?>
 
 <section>
+  <a href="requestServices.php">Request Services</a>
+  >
+ Request a Free Quote for Translation Services
+</section>
+
+<section>
   <form id="contact">
-    <legend>Contact Us</legend>
+    <legend>Request a Free Quote</legend>
     <fieldset>
+      <legend>Step 1: Identification</legend>
+
       <label for="txtTitle">Title</label>
       <select id="txtTitle" name="txtTitle">
       <option value="none" selected>--</option>
@@ -101,22 +109,39 @@
       <input type="email" id="emlEmail" name="emlEmail" placeholder="">
       <br>
 
-      <label for="txtSubject">Subject</label>
-      <select id="txtSubject" name="txtSubject" placeholder="Select">
-      <option value="" selected>-Select One-</option>
-      <option value="Trainings">Trainings</option>
-      <option value="Translation">Translation Services</option>
-      <option value="Interpretation">Interpretation Services</option>
-      <option value="Other">Other</option>
-      </select>
-      <br>
-
       <label for="txtComment">Comment</label>
       <textarea id="txtComment" name="txtComment" wrap="physical" placeholder="Write your comment or inquiry here."></textarea>
 
     </fieldset>
 
     <fieldset>
+      <legend>Step 2: Include Document Details</legend>
+
+      <label for="txtDocumentTitle">Document Title</label>
+      <input type="text" id="txtDocumentTitle" name="txtDocumentTitle" placeholder="">
+      <br>
+
+      <label for="txtDocumentType">Document Type</label>
+      <input type="text" id="txtDocumentType" name="txtDocumentType" placeholder="">
+      <br>
+
+      <label for="numDocumentWordCount">Document Word Count</label>
+      <input type="number" id="numDocumentWordCount" name="numWordCount" placeholder="">
+      <br>
+
+      <label for="datDatepicker">Date Required</label>
+      <input type="date" id="datDatepicker" name="datDatepicker" placeholder="MM-DD-YYYY">
+      <br>
+
+      <label for="uplDocUpload">Upload (optional)</label>
+<!--      <input type="file" id="uplDocUpload" name="uplDocUpload">  -->
+      accepted formats: .pdf, .doc, .docx, .rtf, .txt, .pub
+      <br>
+
+    </fieldset>
+
+    <fieldset>
+       <legend>Step 3: Submit Request</legend>
 	<input type="submit" id="btnSubmit" name="btnSubmit" value="Submit" tabindex="">
     </fieldset>
 
@@ -126,3 +151,4 @@
 <?php include ('footer.php'); ?>
 
 </body>
+</html>

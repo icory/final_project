@@ -5,9 +5,17 @@
 <?php include ('header.php'); ?>
 
 <section>
+  <a href="requestServices.php">Request Services</a>
+  >
+ Request Interpretation Services
+</section>
+
+<section>
   <form id="contact">
-    <legend>Contact Us</legend>
+    <legend>Request an Interpreter</legend>
     <fieldset>
+      <legend>Step 1: Identification</legend>
+
       <label for="txtTitle">Title</label>
       <select id="txtTitle" name="txtTitle">
       <option value="none" selected>--</option>
@@ -101,22 +109,18 @@
       <input type="email" id="emlEmail" name="emlEmail" placeholder="">
       <br>
 
-      <label for="txtSubject">Subject</label>
-      <select id="txtSubject" name="txtSubject" placeholder="Select">
-      <option value="" selected>-Select One-</option>
-      <option value="Trainings">Trainings</option>
-      <option value="Translation">Translation Services</option>
-      <option value="Interpretation">Interpretation Services</option>
-      <option value="Other">Other</option>
-      </select>
-      <br>
-
       <label for="txtComment">Comment</label>
       <textarea id="txtComment" name="txtComment" wrap="physical" placeholder="Write your comment or inquiry here."></textarea>
 
     </fieldset>
 
     <fieldset>
+      <legend></legend>
+
+    </fieldset>
+
+    <fieldset>
+       <legend>Step 3: Submit Request</legend>
 	<input type="submit" id="btnSubmit" name="btnSubmit" value="Submit" tabindex="">
     </fieldset>
 
@@ -126,3 +130,4 @@
 <?php include ('footer.php'); ?>
 
 </body>
+</html>
