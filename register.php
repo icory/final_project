@@ -42,7 +42,7 @@ if ($debug) print "<p>DEBUG MODE IS ON</p>";
 $baseURL = "http://www.uvm.edu/~icory/";
 $folderPath = "cs148/assignment7.1/";
 // full URL of this form
-$yourURL = $baseURL . $folderPath . "contact.php";
+$yourURL = $baseURL . $folderPath . "register.php";
 
 require_once("connect.php");
 
@@ -407,7 +407,7 @@ if (isset($_POST["btnSubmit"])) {
 
 
                 <fieldset class="buttons">
-                    <input type="submit" id="btnSubmit" name="btnSubmit" value="Submit" class="button">
+                    <input type="submit" id="btnSubmit" name="btnSubmit" value="Register" class="button">
                     <input type="reset" id="btnReset" name="btnReset" value="Reset Form" class="button" onclick="reSetForm()" >
                 </fieldset>                    
 

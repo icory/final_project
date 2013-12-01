@@ -6,7 +6,7 @@
     <li><a href="about.php">About</a></li>
     <li><a href="requestServices.php">Request Services</a></li>
     <li><a href="contact.php">Contact</a></li>
-    <li><a href="requests.php">Admin View</a></li>
+    <li><a href="adminView.php">Admin View</a></li>
   </ul>
 </nav>
 
