@@ -47,8 +47,7 @@ $yourURL = $baseURL . $folderPath . "contact.php";
 require_once("connect.php");
 
 //#############################################################################
-// set all form variables to their default value on the form. for testing i set
-// to my email address. you lose 10% on your grade if you forget to change it.
+// set all form variables to their default value on the form.
 
 $firstName="";
 $lastName="";
@@ -163,12 +162,18 @@ if (isset($_POST["btnSubmit"])) {
 //    
         $primaryKey = "";
         $dataEntered = false;
+
+$date = new dateTime();
+$timestamp=$date->format('Y-m-d H:i:s');
         
         try {
             $db->beginTransaction();
            
-            $sql = 'INSERT INTO tblRegister SET fldEmail="' . $email . '"';
+            $sql = 'INSERT INTO tblRequest (fldTimestamp, fldComment) ';
+            $sql.= 'VALUES ("' . $timestamp . '","' . $comment . '");';
+
             $stmt = $db->prepare($sql);
+
             if ($debug) print "<p>sql ". $sql;
        
             $stmt->execute();
@@ -192,20 +197,19 @@ if (isset($_POST["btnSubmit"])) {
             //#################################################################
             // create a key value for confirmation
 
-            $sql = "SELECT fldDateJoined FROM tblRegister WHERE pkRegisterId=" . $primaryKey;
+            $sql = "SELECT fldTimestamp FROM tblRequest WHERE pkRequestId=" . $primaryKey;
             $stmt = $db->prepare($sql);
             $stmt->execute();
 
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             
-            $dateSubmitted = $result["fldDateJoined"];
+            $dateSubmitted = $result["fldTimestamp"];
 
             $key1 = sha1($dateSubmitted);
             $key2 = $primaryKey;
 
             if ($debug) print "<p>key 1: " . $key1;
             if ($debug) print "<p>key 2: " . $key2;
-
 
             //#################################################################
             //
