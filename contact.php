@@ -169,8 +169,20 @@ $timestamp=$date->format('Y-m-d H:i:s');
         try {
             $db->beginTransaction();
            
-            $sql = 'INSERT INTO tblRequest (fldTimestamp, fldComment) ';
-            $sql.= 'VALUES ("' . $timestamp . '","' . $comment . '");';
+            $sql = 'INSERT INTO tblRequest (fldTimestamp, fldComment, fldSubject) ';
+            $sql.= 'VALUES ("' . $timestamp . '","' . $comment . '","' . $subject . '");';
+
+            $stmt = $db->prepare($sql);
+
+            if ($debug) print "<p>sql ". $sql;
+       
+            $stmt->execute();
+
+            $primaryKey = $db->lastInsertId();
+            if ($debug) print "<p>pk= " . $primaryKey;
+
+            $sql = 'INSERT INTO tblClient (fldFirstName, fldLastName, fldOrganization, fldAddress, fldCity, fldState, fldProvince, fldCountry, fldPostalCode, fldEmail, fldPhone) ';
+            $sql.= 'VALUES ("' . $firstName . '","' . $lastName . '","' . $organization . '","' . $address . '","' . $city . '","' . $state . '","' . $province . '","' . $country . '","' . $postalCode . '","' . $email . '","' . $phone . '");';
 
             $stmt = $db->prepare($sql);
 
@@ -178,8 +190,6 @@ $timestamp=$date->format('Y-m-d H:i:s');
        
             $stmt->execute();
             
-            $primaryKey = $db->lastInsertId();
-            if ($debug) print "<p>pk= " . $primaryKey;
 
             // all sql statements are done so lets commit to our changes
             $dataEntered = $db->commit();
