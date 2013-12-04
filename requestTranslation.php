@@ -172,35 +172,29 @@ $timestamp=$date->format('Y-m-d H:i:s');
         
         try {
             $db->beginTransaction();
-           
-            $sql = 'INSERT INTO tblRequest (fldTimestamp, fldComment) ';
-            $sql.= 'VALUES ("' . $timestamp . '","' . $comment . '");';
 
+            $sql = 'INSERT INTO tblClient (fldFirstName, fldLastName, fldOrganization, fldAddress, fldCity, fldState, fldCountry, fldPostalCode, fldEmail, fldPhone) ';
+            $sql.= 'VALUES ("' . $firstName . '","' . $lastName . '","' . $organization . '","' . $address . '","' . $city . '","' . $state . '","' . $country . '","' . $postalCode . '","' . $email . '","' . $phone . '");';
             $stmt = $db->prepare($sql);
-
             if ($debug) print "<p>sql ". $sql;
-       
             $stmt->execute();
 
             $primaryKey = $db->lastInsertId();
             if ($debug) print "<p>pk= " . $primaryKey;
 
-            $sql = 'INSERT INTO tblClient (fldFirstName, fldLastName, fldOrganization, fldAddress, fldCity, fldState, fldCountry, fldPostalCode, fldEmail, fldPhone) ';
-            $sql.= 'VALUES ("' . $firstName . '","' . $lastName . '","' . $organization . '","' . $address . '","' . $city . '","' . $state . '","' . $country . '","' . $postalCode . '","' . $email . '","' . $phone . '");';
-
+            $sql = 'INSERT INTO tblRequest (fkClientID, fldTimestamp, fldComment) ';
+            $sql.= 'VALUES ("' . $primaryKey . '","' . $timestamp . '","' . $comment . '");';
             $stmt = $db->prepare($sql);
-
             if ($debug) print "<p>sql ". $sql;
-       
             $stmt->execute();
 
-            $sql = 'INSERT INTO tblTranslation (fldDocumentTitle, fldDocumentType, fldDocumentWordCount, fldDateRequired) ';
-            $sql.= 'VALUES ("' . $docTitle . '","' . $docType . '","' . $docWordCount . '","' . $dateRequired . '");';
+            $primaryKey = $db->lastInsertId();
+            if ($debug) print "<p>pk= " . $primaryKey;
 
+            $sql = 'INSERT INTO tblTranslation (pkfkRequestID, fldDocumentTitle, fldDocumentType, fldDocumentWordCount, fldDateRequired) ';
+            $sql.= 'VALUES ("' . $primaryKey . '","' . $docTitle . '","' . $docType . '","' . $docWordCount . '","' . $dateRequired . '");';
             $stmt = $db->prepare($sql);
-
             if ($debug) print "<p>sql ". $sql;
-       
             $stmt->execute();
 
             // all sql statements are done so lets commit to our changes

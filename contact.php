@@ -167,20 +167,17 @@ $timestamp=$date->format('Y-m-d H:i:s');
         try {
             $db->beginTransaction();
            
-            $sql = 'INSERT INTO tblRequest (fldTimestamp, fldComment, fldSubject) ';
-            $sql.= 'VALUES ("' . $timestamp . '","' . $comment . '","' . $subject . '");';
-
+            $sql = 'INSERT INTO tblClient (fldFirstName, fldLastName, fldOrganization, fldAddress, fldCity, fldState, fldCountry, fldPostalCode, fldEmail, fldPhone) ';
+            $sql.= 'VALUES ("' . $firstName . '","' . $lastName . '","' . $organization . '","' . $address . '","' . $city . '","' . $state . '","' . $country . '","' . $postalCode . '","' . $email . '","' . $phone . '");';
             $stmt = $db->prepare($sql);
-
             if ($debug) print "<p>sql ". $sql;
-       
             $stmt->execute();
 
             $primaryKey = $db->lastInsertId();
             if ($debug) print "<p>pk= " . $primaryKey;
 
-            $sql = 'INSERT INTO tblClient (fldFirstName, fldLastName, fldOrganization, fldAddress, fldCity, fldState, fldCountry, fldPostalCode, fldEmail, fldPhone) ';
-            $sql.= 'VALUES ("' . $firstName . '","' . $lastName . '","' . $organization . '","' . $address . '","' . $city . '","' . $state . '","' . $country . '","' . $postalCode . '","' . $email . '","' . $phone . '");';
+            $sql = 'INSERT INTO tblRequest (fkClientID, fldTimestamp, fldComment, fldSubject) ';
+            $sql.= 'VALUES ("' . $primaryKey . '","' . $timestamp . '","' . $comment . '","' . $subject . '");';
 
             $stmt = $db->prepare($sql);
 
@@ -326,94 +323,94 @@ $timestamp=$date->format('Y-m-d H:i:s');
       <br>
 
       <label for="lstState">State</label>
-    <select name="lstState" id="lstState">
-    <option value="" selected>-Choose State-</option>
-    <option value="US">-U.S. States-</option>
-    <option value="AL">Alabama</option>
-    <option value="AK">Alaska</option>
-    <option value="AZ">Arizona</option>
-    <option value="AR">Arkansas</option>
-    <option value="CA">California</option>
-    <option value="CO">Colorado</option>
-    <option value="CT">Connecticut</option>
-    <option value="DE">Delaware</option>
-    <option value="DC">District of Columbia</option>
-    <option value="FL">Florida</option>
-    <option value="GA">Georgia</option>
-    <option value="HI">Hawaii</option>
-    <option value="ID">Idaho</option>
-    <option value="IL">Illinois</option>
-    <option value="IN">Indiana</option>
-    <option value="IA">Iowa</option>
-    <option value="KS">Kansas</option>
-    <option value="KY">Kentucky</option>
-    <option value="LA">Louisiana</option>
-    <option value="ME">Maine</option>
-    <option value="MD">Maryland</option>
-    <option value="MA">Massachusetts</option>
-    <option value="MI">Michigan</option>
-    <option value="MN">Minnesota</option>
-    <option value="MS">Mississippi</option>
-    <option value="MO">Missouri</option>
-    <option value="MT">Montana</option>
-    <option value="NE">Nebraska</option>
-    <option value="NV">Nevada</option>
-    <option value="NH">New Hampshire</option>
-    <option value="NJ">New Jersey</option>
-    <option value="NM">New Mexico</option>
-    <option value="NY">New York</option>
-    <option value="NC">North Carolina</option>
-    <option value="ND">North Dakota</option>
-    <option value="OH">Ohio</option>
-    <option value="OK">Oklahoma</option>
-    <option value="OR">Oregon</option>
-    <option value="PA">Pennsylvania</option>
-    <option value="RI">Rhode Island</option>
-    <option value="SC">South Carolina</option>
-    <option value="SD">South Dakota</option>
-    <option value="TN">Tennessee</option>
-    <option value="TX">Texas</option>
-    <option value="UT">Utah</option>
-    <option value="VT">Vermont</option>
-    <option value="VA">Virginia</option>
-    <option value="WA">Washington</option>
-    <option value="WV">West Virginia</option>
-    <option value="WI">Wisconsin</option>
-    <option value="WY">Wyoming</option>
-    <option value="MEX">-Estados de Mexico-</option>
-    <option value="Aguascalientes">Aguascalientes</option>
-    <option value="Baja California">Baja California</option>
-    <option value="Baja California Sur">Baja California Sur</option>
-    <option value="Campeche">Campeche</option>
-    <option value="Chiapas">Chiapas</option>
-    <option value="Chihuahua">Chihuahua</option>
-    <option value="Coahuila">Coahuila</option>
-    <option value="Colima">Colima</option>
-    <option value="Distrito Federal">Distrito Federal</option>
-    <option value="Durango">Durango</option>
-    <option value="Guanajuato">Guanajuato</option>
-    <option value="Guerrero">Guerrero</option>
-    <option value="Hidalgo">Hidalgo</option>
-    <option value="Jalisco">Jalisco</option>
-    <option value="Mexico">Mexico</option>
-    <option value="Michoacan">Michoac&aacute;n</option>
-    <option value="Morelos">Morelos</option>
-    <option value="Nayarit">Nayarit</option>
-    <option value="Nuevo Leon">Nuevo Le&oacute;n</option>
-    <option value="Oaxaca">Oaxaca</option>
-    <option value="Puebla">Puebla</option>
-    <option value="Queretaro">Quer&eacute;taro</option>
-    <option value="Quintana Roo">Quintana Roo</option>
-    <option value="San Luis Potosi">San Luis Potosi</option>
-    <option value="Sinaloa">Sinaloa</option>
-    <option value="Sonora">Sonora</option>
-    <option value="Tabasco">Tabasco</option>
-    <option value="Tamaulipas">Tamaulipas</option>
-    <option value="Tlaxcala">Tlaxcala</option>
-    <option value="Veracruz">Veracruz</option>
-    <option value="Yucatan">Yucatan</option>
-    <option value="Zacatecas">Zacatecas</option>
-    </select>
+      <select name="lstState" id="lstState">
+      <option value="" selected>-Choose State-</option>
+      <option value="US">-U.S. States-</option>
+      <option value="AL">Alabama</option>
+      <option value="AK">Alaska</option>
+      <option value="AZ">Arizona</option>
+      <option value="AR">Arkansas</option>
+      <option value="CA">California</option>
+      <option value="CO">Colorado</option>
+      <option value="CT">Connecticut</option>
+       <option value="DE">Delaware</option>
+      <option value="DC">District of Columbia</option>
+      <option value="FL">Florida</option>
+      <option value="GA">Georgia</option>
+      <option value="HI">Hawaii</option>
+      <option value="ID">Idaho</option>
+      <option value="IL">Illinois</option>
+      <option value="IN">Indiana</option>
+      <option value="IA">Iowa</option>
+      <option value="KS">Kansas</option>
+      <option value="KY">Kentucky</option>
+      <option value="LA">Louisiana</option>
+      <option value="ME">Maine</option>
+      <option value="MD">Maryland</option>
+      <option value="MA">Massachusetts</option>
+      <option value="MI">Michigan</option>
+      <option value="MN">Minnesota</option>
+      <option value="MS">Mississippi</option>
+      <option value="MO">Missouri</option>
+      <option value="MT">Montana</option>
+      <option value="NE">Nebraska</option>
+      <option value="NV">Nevada</option>
+      <option value="NH">New Hampshire</option>
+      <option value="NJ">New Jersey</option>
+      <option value="NM">New Mexico</option>
+      <option value="NY">New York</option>
+      <option value="NC">North Carolina</option>
+      <option value="ND">North Dakota</option>
+      <option value="OH">Ohio</option>
+      <option value="OK">Oklahoma</option>
+      <option value="OR">Oregon</option>
+      <option value="PA">Pennsylvania</option>
+      <option value="RI">Rhode Island</option>
+      <option value="SC">South Carolina</option>
+      <option value="SD">South Dakota</option>
+      <option value="TN">Tennessee</option>
+      <option value="TX">Texas</option>
+      <option value="UT">Utah</option>
+      <option value="VT">Vermont</option>
+      <option value="VA">Virginia</option>
+      <option value="WA">Washington</option>
+      <option value="WV">West Virginia</option>
+      <option value="WI">Wisconsin</option>
+      <option value="WY">Wyoming</option>
+      <option value="MEX">-Estados de Mexico-</option>
+      <option value="Aguascalientes">Aguascalientes</option>
+      <option value="Baja California">Baja California</option>
+      <option value="Baja California Sur">Baja California Sur</option>
+      <option value="Campeche">Campeche</option>
+      <option value="Chiapas">Chiapas</option>
+      <option value="Chihuahua">Chihuahua</option>
+      <option value="Coahuila">Coahuila</option>
+      <option value="Colima">Colima</option>
+      <option value="Distrito Federal">Distrito Federal</option>
+      <option value="Durango">Durango</option>
+      <option value="Guanajuato">Guanajuato</option>
+      <option value="Guerrero">Guerrero</option>
+      <option value="Hidalgo">Hidalgo</option>
+      <option value="Jalisco">Jalisco</option>
+      <option value="Mexico">Mexico</option>
+      <option value="Michoacan">Michoac&aacute;n</option>
+      <option value="Morelos">Morelos</option>
+      <option value="Nayarit">Nayarit</option>
+      <option value="Nuevo Leon">Nuevo Le&oacute;n</option>
+      <option value="Oaxaca">Oaxaca</option>
+      <option value="Puebla">Puebla</option>
+      <option value="Queretaro">Quer&eacute;taro</option>
+      <option value="Quintana Roo">Quintana Roo</option>
+      <option value="San Luis Potosi">San Luis Potosi</option>
+      <option value="Sinaloa">Sinaloa</option>
+      <option value="Sonora">Sonora</option>
+      <option value="Tabasco">Tabasco</option>
+      <option value="Tamaulipas">Tamaulipas</option>
+      <option value="Tlaxcala">Tlaxcala</option>
+      <option value="Veracruz">Veracruz</option>
+      <option value="Yucatan">Yucatan</option>
+      <option value="Zacatecas">Zacatecas</option>
+      </select>
       <br>
 
       <label for="lstCountry">Country</label>
