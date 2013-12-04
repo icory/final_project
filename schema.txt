@@ -14,13 +14,14 @@ fldPhone VARCHAR(20)
 
 CREATE TABLE tblRequest(
 pkRequestID INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+fkClientID INT(11) NOT NULL REFERENCES tblClient(pkClientID),
 fldTimestamp DATETIME NOT NULL,
 fldComment VARCHAR(250),
 fldSubject VARCHAR(50)
 );
 
 CREATE TABLE tblTranslation(
-pkTranslationID INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+pkfkRequestID INT(11) NOT NULL  PRIMARY KEY REFERENCES tblRequest(pkRequestID),
 fldDocumentTitle VARCHAR(30),
 fldDocumentType VARCHAR(30),
 fldDocumentWordCount INT(11),
@@ -29,12 +30,11 @@ fldDocumentUpload VARCHAR(255)
 );
 
 CREATE TABLE tblInterpretation(
-pkInterpretationID INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-fldMode VARCHAR(20),
+pkfkRequestID INT(11) NOT NULL PRIMARY KEY REFERENCES tblRequest(pkRequestID),
+fldMode VARCHAR(10),
 fldAppointmentDate DATE,
-fldStartTime VARCHAR(255),
-fldEndTime VARCHAR(255),
-fldAppointmentAddress VARCHAR(255),
-fldPhoneDetails VARCHAR(255),
-fldVideoDetails VARCHAR(255)
+fldStartTime VARCHAR(15),
+fldEndTime VARCHAR(15),
+fldTimeZone VARCHAR(100),
+fldAppointmentAddress VARCHAR(255)
 );
