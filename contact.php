@@ -109,7 +109,7 @@ if (isset($_POST["btnSubmit"])) {
     $address = htmlentities($_POST["txtAddress"],ENT_QUOTES,"UTF-8");
     $city = htmlentities($_POST["txtCity"],ENT_QUOTES,"UTF-8");
     $state = htmlentities($_POST["lstState"],ENT_QUOTES,"UTF-8");
-    $country = htmlentities($_POST["txtCountry"],ENT_QUOTES,"UTF-8");
+    $country = htmlentities($_POST["lstCountry"],ENT_QUOTES,"UTF-8");
     $postalCode = htmlentities($_POST["txtPostalCode"],ENT_QUOTES,"UTF-8");
     $email = htmlentities($_POST["emlEmail"],ENT_QUOTES,"UTF-8");
     $phone = htmlentities($_POST["telPhone"],ENT_QUOTES,"UTF-8");
@@ -325,9 +325,10 @@ $timestamp=$date->format('Y-m-d H:i:s');
       <input type="text" id="txtCity" name="txtCity" placeholder="">
       <br>
 
-      <label for="lstState">State (if U.S.)</label>
+      <label for="lstState">State</label>
     <select name="lstState" id="lstState">
     <option value="" selected>-Choose State-</option>
+    <option value="US">-U.S. States-</option>
     <option value="AL">Alabama</option>
     <option value="AK">Alaska</option>
     <option value="AZ">Arizona</option>
@@ -379,11 +380,48 @@ $timestamp=$date->format('Y-m-d H:i:s');
     <option value="WV">West Virginia</option>
     <option value="WI">Wisconsin</option>
     <option value="WY">Wyoming</option>
+    <option value="MEX">-Estados de Mexico-</option>
+    <option value="Aguascalientes">Aguascalientes</option>
+    <option value="Baja California">Baja California</option>
+    <option value="Baja California Sur">Baja California Sur</option>
+    <option value="Campeche">Campeche</option>
+    <option value="Chiapas">Chiapas</option>
+    <option value="Chihuahua">Chihuahua</option>
+    <option value="Coahuila">Coahuila</option>
+    <option value="Colima">Colima</option>
+    <option value="Distrito Federal">Distrito Federal</option>
+    <option value="Durango">Durango</option>
+    <option value="Guanajuato">Guanajuato</option>
+    <option value="Guerrero">Guerrero</option>
+    <option value="Hidalgo">Hidalgo</option>
+    <option value="Jalisco">Jalisco</option>
+    <option value="Mexico">Mexico</option>
+    <option value="Michoacan">Michoac&aacute;n</option>
+    <option value="Morelos">Morelos</option>
+    <option value="Nayarit">Nayarit</option>
+    <option value="Nuevo Leon">Nuevo Le&oacute;n</option>
+    <option value="Oaxaca">Oaxaca</option>
+    <option value="Puebla">Puebla</option>
+    <option value="Queretaro">Quer&eacute;taro</option>
+    <option value="Quintana Roo">Quintana Roo</option>
+    <option value="San Luis Potosi">San Luis Potosi</option>
+    <option value="Sinaloa">Sinaloa</option>
+    <option value="Sonora">Sonora</option>
+    <option value="Tabasco">Tabasco</option>
+    <option value="Tamaulipas">Tamaulipas</option>
+    <option value="Tlaxcala">Tlaxcala</option>
+    <option value="Veracruz">Veracruz</option>
+    <option value="Yucatan">Yucatan</option>
+    <option value="Zacatecas">Zacatecas</option>
     </select>
       <br>
 
-      <label for="txtCountry">Country</label>
-      <input type="text" id="txtCountry" name="txtCountry" placeholder="">
+      <label for="lstCountry">Country</label>
+      <select name="lstCountry" id="lstCountry">
+      <option value="" selected>-Select Country-</option>
+      <option value="USA">United States</option>
+      <option value="MEX">Mexico</option>
+      </select>
       <br>
 
       <label for="txtPostalCode">Postal Code</label>
