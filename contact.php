@@ -54,7 +54,6 @@ $lastName="";
 $organization="";
 $city="";
 $state="-Choose State-";
-$province="";
 $country="";
 $postalCode="";
 $email="icory@uvm.edu";
@@ -110,7 +109,6 @@ if (isset($_POST["btnSubmit"])) {
     $address = htmlentities($_POST["txtAddress"],ENT_QUOTES,"UTF-8");
     $city = htmlentities($_POST["txtCity"],ENT_QUOTES,"UTF-8");
     $state = htmlentities($_POST["lstState"],ENT_QUOTES,"UTF-8");
-    $province = htmlentities($_POST["txtProvince"],ENT_QUOTES,"UTF-8");
     $country = htmlentities($_POST["txtCountry"],ENT_QUOTES,"UTF-8");
     $postalCode = htmlentities($_POST["txtPostalCode"],ENT_QUOTES,"UTF-8");
     $email = htmlentities($_POST["emlEmail"],ENT_QUOTES,"UTF-8");
@@ -181,8 +179,8 @@ $timestamp=$date->format('Y-m-d H:i:s');
             $primaryKey = $db->lastInsertId();
             if ($debug) print "<p>pk= " . $primaryKey;
 
-            $sql = 'INSERT INTO tblClient (fldFirstName, fldLastName, fldOrganization, fldAddress, fldCity, fldState, fldProvince, fldCountry, fldPostalCode, fldEmail, fldPhone) ';
-            $sql.= 'VALUES ("' . $firstName . '","' . $lastName . '","' . $organization . '","' . $address . '","' . $city . '","' . $state . '","' . $province . '","' . $country . '","' . $postalCode . '","' . $email . '","' . $phone . '");';
+            $sql = 'INSERT INTO tblClient (fldFirstName, fldLastName, fldOrganization, fldAddress, fldCity, fldState, fldCountry, fldPostalCode, fldEmail, fldPhone) ';
+            $sql.= 'VALUES ("' . $firstName . '","' . $lastName . '","' . $organization . '","' . $address . '","' . $city . '","' . $state . '","' . $country . '","' . $postalCode . '","' . $email . '","' . $phone . '");';
 
             $stmt = $db->prepare($sql);
 
@@ -384,10 +382,6 @@ $timestamp=$date->format('Y-m-d H:i:s');
     </select>
       <br>
 
-      <label for="txtProvince">Province (if applicable)</label>
-      <input type="text" id="txtProvince" name="txtProvince" placeholder="">
-      <br>
-
       <label for="txtCountry">Country</label>
       <input type="text" id="txtCountry" name="txtCountry" placeholder="">
       <br>
@@ -418,7 +412,6 @@ $timestamp=$date->format('Y-m-d H:i:s');
       <textarea id="txtComment" name="txtComment" wrap="physical" placeholder="Write your comment or inquiry here."></textarea>
 
     </fieldset>
-
 
                 <fieldset class="buttons">
                     <input type="submit" id="btnSubmit" name="btnSubmit" value="Submit" class="button">
