@@ -198,35 +198,16 @@ $timestamp=$date->format('Y-m-d H:i:s');
 
         // If the transaction was successful, give success message
         if ($dataEntered) {
-            if ($debug) print "<p>data entered now prepare keys ";
-            //#################################################################
-            // create a key value for confirmation
-
-            $sql = "SELECT fldTimestamp FROM tblRequest WHERE pkRequestId=" . $primaryKey;
-            $stmt = $db->prepare($sql);
-            $stmt->execute();
-
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            
-            $dateSubmitted = $result["fldTimestamp"];
-
-            $key1 = sha1($dateSubmitted);
-            $key2 = $primaryKey;
-
-            if ($debug) print "<p>key 1: " . $key1;
-            if ($debug) print "<p>key 2: " . $key2;
-
             //#################################################################
             //
             //Put forms information into a variable to print on the screen
             //
 
-            $messageA = '<h2>Thank you for registering.</h2>';
+            $messageA = "<h2>Hello " . $firstName . ". Thank you for contacting us.</h2>";
 
-            $messageB = "<p>Click this link to confirm your registration: ";
-            $messageB .= '<a href="' . $baseURL . $folderPath  . 'confirmation.php?q=' . $key1 . '&amp;w=' . $key2 . '">Confirm Registration</a></p>';
-            $messageB .= "<p>or copy and paste this url into a web browser: ";
-            $messageB .= $baseURL . $folderPath  . 'confirmation.php?q=' . $key1 . '&amp;w=' . $key2 . "</p>";
+            $messageB = "<p>We have received your comment and will respond to you as soon as we are able. ";
+            $messageB .= "If you are looking for the answer to a question and haven't yet visited the FAQ page, you may do so <a href='http://www.uvm.edu/~icory/cs148/assignment7.1/faq.php'>here</a>.</p>";
+            $messageB .= "<p><a href='http://www.uvm.edu/~icory/cs148/assignment7.1/home.php'>X-Cultural Communications Website</a></p>";
 
             $messageC .= "<p><b>Email Address:</b><i>   " . $email . "</i></p>";
 
@@ -237,7 +218,7 @@ $timestamp=$date->format('Y-m-d H:i:s');
             
             $subject = "X-Cultural Communications*";
             include_once('mailMessage.php');
-            $mailed = sendMail($email, $subject, $messageA . $messageB . $messageC);
+            $mailed = sendMail($email, $subject, $messageA . $messageB);
         } //data entered   
     } // no errors 
 }// ends if form was submitted. 
@@ -275,7 +256,7 @@ $timestamp=$date->format('Y-m-d H:i:s');
             }
             print "been sent to: " . $email . "</p>";
 
-            echo $messageA . $messageC;
+            echo $messageA . $messageB . $messageC;
         } else {
 
 
