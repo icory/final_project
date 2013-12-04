@@ -6,7 +6,6 @@ fldOrganization VARCHAR(30),
 fldAddress VARCHAR(50),
 fldCity VARCHAR(20),
 fldState VARCHAR(20),
-fldProvince VARCHAR(20),
 fldCountry VARCHAR(20),
 fldPostalCode VARCHAR(11),
 fldEmail VARCHAR(65),
@@ -24,7 +23,7 @@ CREATE TABLE tblTranslation(
 pkTranslationID INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 fldDocumentTitle VARCHAR(30),
 fldDocumentType VARCHAR(30),
-fldDocumentWordCount INT(5),
+fldDocumentWordCount INT(11),
 fldDateRequired DATE,
 fldDocumentUpload VARCHAR(255)
 );
