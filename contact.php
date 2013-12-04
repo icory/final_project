@@ -36,7 +36,7 @@
 // Initialize variables
 //  
 
-$debug = true;
+$debug = false;
 if ($debug) print "<p>DEBUG MODE IS ON</p>";
 
 $baseURL = "http://www.uvm.edu/~icory/";
@@ -314,7 +314,7 @@ $timestamp=$date->format('Y-m-d H:i:s');
       <option value="CA">California</option>
       <option value="CO">Colorado</option>
       <option value="CT">Connecticut</option>
-       <option value="DE">Delaware</option>
+      <option value="DE">Delaware</option>
       <option value="DC">District of Columbia</option>
       <option value="FL">Florida</option>
       <option value="GA">Georgia</option>
@@ -427,12 +427,12 @@ $timestamp=$date->format('Y-m-d H:i:s');
       <label for="txtComment">Comment</label>
       <textarea id="txtComment" name="txtComment" wrap="physical" placeholder="Write your comment or inquiry here."></textarea>
 
-    </fieldset>
+      </fieldset>
 
-                <fieldset class="buttons">
-                    <input type="submit" id="btnSubmit" name="btnSubmit" value="Submit" class="button">
-                    <input type="reset" id="btnReset" name="btnReset" value="Reset Form" class="button" onclick="reSetForm()" >
-                </fieldset>                    
+      <fieldset class="buttons">
+        <input type="submit" id="btnSubmit" name="btnSubmit" value="Submit" class="button">
+        <input type="reset" id="btnReset" name="btnReset" value="Reset Form" class="button" onclick="reSetForm()" >
+      </fieldset>                    
 
             </form>
             <?php

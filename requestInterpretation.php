@@ -12,23 +12,6 @@
  * Last updated on: October 10, 2013
  * 
  * 
-  -- --------------------------------------------------------
-  --
-  -- Table structure for table `tblRegister`
-  --
-
-  CREATE TABLE IF NOT EXISTS `tblContributor` (
-  `pkRegisterId` int(11) NOT NULL AUTO_INCREMENT,
-  `fldEmail` varchar(65) DEFAULT NULL,
-  `fldDateJoined` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `fldConfirmed` tinyint(1) NOT NULL DEFAULT '0',
-  `fldApproved` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`pkPersonId`)
-  ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
- * I am using a surrogate key for demonstration, 
- * email would make a good primary key as well which would prevent someone
- * from entering an email address in more than one record.
  */
 
 //-----------------------------------------------------------------------------
@@ -36,7 +19,7 @@
 // Initialize variables
 //  
 
-$debug = true;
+$debug = false;
 if ($debug) print "<p>DEBUG MODE IS ON</p>";
 
 $baseURL = "http://www.uvm.edu/~icory/";
