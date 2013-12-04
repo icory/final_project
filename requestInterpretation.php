@@ -223,35 +223,15 @@ $timestamp=$date->format('Y-m-d H:i:s');
 
         // If the transaction was successful, give success message
         if ($dataEntered) {
-            if ($debug) print "<p>data entered now prepare keys ";
-            //#################################################################
-            // create a key value for confirmation
-
-            $sql = "SELECT fldTimestamp FROM tblRequest WHERE pkRequestId=" . $primaryKey;
-            $stmt = $db->prepare($sql);
-            $stmt->execute();
-
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            
-            $dateSubmitted = $result["fldTimestamp"];
-
-            $key1 = sha1($dateSubmitted);
-            $key2 = $primaryKey;
-
-            if ($debug) print "<p>key 1: " . $key1;
-            if ($debug) print "<p>key 2: " . $key2;
-
             //#################################################################
             //
             //Put forms information into a variable to print on the screen
             //
 
-            $messageA = '<h2>Thank you for registering.</h2>';
+            $messageA = "<h2>Hello " . $firstName . ". Thank you for contacting us.</h2>";
 
-            $messageB = "<p>Click this link to confirm your registration: ";
-            $messageB .= '<a href="' . $baseURL . $folderPath  . 'confirmation.php?q=' . $key1 . '&amp;w=' . $key2 . '">Confirm Registration</a></p>';
-            $messageB .= "<p>or copy and paste this url into a web browser: ";
-            $messageB .= $baseURL . $folderPath  . 'confirmation.php?q=' . $key1 . '&amp;w=' . $key2 . "</p>";
+            $messageB = "<p>We have received your request for an interpretor and will respond to you with a quote and our availability as soon as we are able (never longer than 2 business days). ";
+            $messageB .= "<p><a href='http://www.uvm.edu/~icory/cs148/assignment7.1/home.php'>X-Cultural Communications Website</a></p>";
 
             $messageC .= "<p><b>Email Address:</b><i>   " . $email . "</i></p>";
 
@@ -262,7 +242,7 @@ $timestamp=$date->format('Y-m-d H:i:s');
             
             $subject = "X-Cultural Communications*";
             include_once('mailMessage.php');
-            $mailed = sendMail($email, $subject, $messageA . $messageB . $messageC);
+            $mailed = sendMail($email, $subject, $messageA . $messageB);
         } //data entered   
     } // no errors 
 }// ends if form was submitted. 
@@ -284,7 +264,7 @@ $timestamp=$date->format('Y-m-d H:i:s');
 </section>
 
 <section>
-<p>In need of an interpreter in the U.S. or Mexico? You can request an interpreter on this page. Please provide us with the details of the appointment in the following form. You should receive an automatic confirmation that we've received your request. Please allow up to two (2) business days for us to process your request. If this is a time-sensitive situation, please call us at (+1)XXX-XXX-XXXX. You will receive an email with a price quote for our services and have the opportunity to confirm the appointment. 
+<p>You may request an interpreter on this page. Please provide us with the details on the following form. You should receive an automatic email from us confirming that your request has been processed. We will contact you shortly with more information and a response.<p> 
 </section>
 
 <section>
@@ -309,7 +289,7 @@ $timestamp=$date->format('Y-m-d H:i:s');
             }
             print "been sent to: " . $email . "</p>";
 
-            echo $messageA . $messageC;
+            echo $messageA . $messageB;
         } else {
 
 
