@@ -16,6 +16,7 @@ media="screen">
 <script>
 $(function() {
 $( "#datepicker" ).datepicker({
+dateFormat: "yy-mm-dd",
 showOn: "button",
 buttonImage: "imgdir/calendar2.gif",
 buttonImageOnly: true
