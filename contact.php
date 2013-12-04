@@ -256,7 +256,7 @@ $timestamp=$date->format('Y-m-d H:i:s');
             }
             print "been sent to: " . $email . "</p>";
 
-            echo $messageA . $messageB . $messageC;
+            echo $messageA . $messageB;
         } else {
 
 
