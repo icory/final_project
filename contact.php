@@ -1,36 +1,4 @@
 <?php
-/* the purpose of this page is to display a form to allow a person to register
- * the form will be sticky meaning if there is a mistake the data previously 
- * entered will be displayed again. Once a form is submitted (to this same page)
- * we first sanitize our data by replacing html codes with the html character.
- * then we check to see if the data is valid. if data is valid enter the data 
- * into the table and we send and dispplay a confirmation email message. 
- * 
- * if the data is incorrect we flag the errors.
- * 
- * Written By: Robert Erickson robert.erickson@uvm.edu
- * Last updated on: October 10, 2013
- * 
- * 
-  -- --------------------------------------------------------
-  --
-  -- Table structure for table `tblRegister`
-  --
-
-  CREATE TABLE IF NOT EXISTS `tblContributor` (
-  `pkRegisterId` int(11) NOT NULL AUTO_INCREMENT,
-  `fldEmail` varchar(65) DEFAULT NULL,
-  `fldDateJoined` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `fldConfirmed` tinyint(1) NOT NULL DEFAULT '0',
-  `fldApproved` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`pkPersonId`)
-  ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
- * I am using a surrogate key for demonstration, 
- * email would make a good primary key as well which would prevent someone
- * from entering an email address in more than one record.
- */
-
 //-----------------------------------------------------------------------------
 // 
 // Initialize variables
@@ -56,7 +24,7 @@ $city="";
 $state="-Choose State-";
 $country="";
 $postalCode="";
-$email="icory@uvm.edu";
+$email="";
 $phone="";
 $subject="-Select One-";
 $comment="";
@@ -278,9 +246,8 @@ $timestamp=$date->format('Y-m-d H:i:s');
             print '</div>';
             ?>
             <!--   Take out enctype line    -->
-            <form action="<? print $_SERVER['PHP_SELF']; ?>"
-                  enctype="multipart/form-data"
-                  method="post">
+    <div class="container">
+    <form action="<? print $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data" method="post">
     <legend>Contact Us</legend>
     <fieldset>
       <label for="txtFirstName">First Name</label>
@@ -434,7 +401,8 @@ $timestamp=$date->format('Y-m-d H:i:s');
         <input type="reset" id="btnReset" name="btnReset" value="Reset Form" class="button" onclick="reSetForm()" >
       </fieldset>                    
 
-            </form>
+      </form>
+      </div> <!-- end div.container -->
             <?php
         } // end body submit
         if ($debug)
