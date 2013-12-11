@@ -58,9 +58,9 @@ $messageC = "";
 if (isset($_POST["btnSubmit"])) {
     $fromPage = getenv("http_referer");
 
-    if ($debug)
+    if ($debug) {
         print "<p>From: " . $fromPage . " should match ";
-        print "<p>Your: " . $yourURL;
+        print "<p>Your: " . $yourURL; }
 
     if ($fromPage != $yourURL) {
         die("<p>Sorry you cannot access this page. Security breach detected and reported.</p>");
