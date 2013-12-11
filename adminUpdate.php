@@ -49,9 +49,12 @@ if (isset($_POST["lstClients"])) {
     
     $id = htmlentities($_POST["lstClients"], ENT_QUOTES);
 
-    $sql = "SELECT * ";
+    $sql = "SELECT tblClient.*, tblRequest.* ";
     $sql .= "FROM tblClient ";
+    $sql .= "LEFT JOIN tblRequest on tblClient.pkClientID = tblRequest.fkClientID ";
     $sql .= "WHERE pkClientId=" . $id;
+    $sql .= " OR tblRequest.fkClientId=" . $id;
+
 
     if ($debug)
         print "<p>sql " . $sql;
@@ -78,6 +81,7 @@ if (isset($_POST["lstClients"])) {
         $postalCode = $client["fldPostalCode"];
         $email = $client["fldEmail"];
         $phone = $client["fldPhone"];
+        $comment = $client["fldComment"];
     }
 } else { //default values
 
@@ -111,8 +115,10 @@ if (isset($_POST["cmdDelete"])) {
     // I may need to do a select to see if there are any related records.
     // and determine my processing steps before i try to code.
 
-    $sql = "DELETE ";
+    $sql = "DELETE tblClient.*, tblRequest.*, tblTranslation.* ";
     $sql .= "FROM tblClient ";
+    $sql .= "LEFT JOIN tblRequest ON tblRequest.fkClientID = tblClient.pkClientID ";
+    $sql .= "LEFT JOIN tblTranslation ON tblRequest.pkRequestID = tblTranslation.pkfkRequestID ";
     $sql .= "WHERE pkClientID=" . $delId;
 
     if ($debug)
@@ -189,18 +195,22 @@ if (isset($_POST["btnSubmit"])) {
 
         if (isset($_POST["id"])) { // update record
             $sql = "UPDATE ";
-            $sql .= "tblClient SET ";
-            $sql .= "fldFirstName='$firstName', ";
-            $sql .= "fldLastName='$lastName', ";
-            $sql .= "fldOrganization='$organization', ";
-            $sql .= "fldAddress='$address', ";
-            $sql .= "fldCity='$city', ";
-            $sql .= "fldState='$state', ";
-            $sql .= "fldCountry='$country', ";
-            $sql .= "fldPostalCode='$postalCode', ";
-            $sql .= "fldEmail='$email', ";
-            $sql .= "fldPhone='$phone' ";
-            $sql .= "WHERE pkClientId=" . $id;
+            $sql .= "tblClient ";
+            $sql .= "LEFT JOIN tblRequest ON tblRequest.fkClientID = tblClient.pkClientID ";
+            $sql .= "SET ";
+            $sql .= "tblClient.fldFirstName='$firstName', ";
+            $sql .= "tblClient.fldLastName='$lastName', ";
+            $sql .= "tblClient.fldOrganization='$organization', ";
+            $sql .= "tblClient.fldAddress='$address', ";
+            $sql .= "tblClient.fldCity='$city', ";
+            $sql .= "tblClient.fldState='$state', ";
+            $sql .= "tblClient.fldCountry='$country', ";
+            $sql .= "tblClient.fldPostalCode='$postalCode', ";
+            $sql .= "tblClient.fldEmail='$email', ";
+            $sql .= "tblClient.fldPhone='$phone', ";
+            $sql .= "WHERE tblClient.pkClientID=" . $id;
+
+
         } else { // insert record
             $sql = 'INSERT INTO tblClient (fldFirstName, fldLastName, fldOrganization, fldAddress, fldCity, fldState, fldCountry, fldPostalCode, fldEmail, fldPhone) ';
             $sql.= 'VALUES ("' . $firstName . '","' . $lastName . '","' . $organization . '","' . $address . '","' . $city . '","' . $state . '","' . $country . '","' . $postalCode . '","' . $email . '","' . $phone . '");';
@@ -225,7 +235,7 @@ if (isset($_POST["btnSubmit"])) {
         // update or insert complete
         if($enterData){
             header('Location: adminView.php');
-            exit();
+           // exit();
         }
         
     }// end no errors	
