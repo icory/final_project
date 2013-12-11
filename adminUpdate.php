@@ -51,7 +51,7 @@ if (isset($_POST["lstClients"])) {
 
     $sql = "SELECT tblClient.*, tblRequest.* ";
     $sql .= "FROM tblClient ";
-    $sql .= "LEFT JOIN tblRequest on tblClient.pkClientID = tblRequest.fkClientID ";
+    $sql .= "LEFT JOIN tblRequest ON tblClient.pkClientID = tblRequest.fkClientID ";
     $sql .= "WHERE pkClientId=" . $id;
     $sql .= " OR tblRequest.fkClientId=" . $id;
 
