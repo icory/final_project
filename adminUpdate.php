@@ -250,6 +250,8 @@ print '<body id="' . $file_name . '">';
 
 include ("header.php");
 
+print '<div class="container">';
+
 if ($id != "") {
     print "<h2>Edit Client Information</h2>";
     //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
@@ -431,6 +433,7 @@ End Hide -->
         <input type="submit" name="btnSubmit" value="Submit" />
     </fieldset>		
 </form>
+</div> <!-- end div.container -->
 <?php
 
 include ("footer.php");

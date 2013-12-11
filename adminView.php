@@ -37,6 +37,7 @@ include ("header.php");
 
 <section>
 
+<div class="container">
 <form action="adminUpdate.php" method="post" id="adminSelect">
 
 <?php
@@ -81,6 +82,7 @@ print "</select>\n";
     print "<p>END OF PROCESSING</p>";
       ?>
 </section>
+</div>
 
 
 <?
