@@ -19,7 +19,7 @@
 // Initialize variables
 //  
 
-$debug = false;
+$debug = true;
 if ($debug) print "<p>DEBUG MODE IS ON</p>";
 
 $baseURL = "http://www.uvm.edu/~icory/";
@@ -101,7 +101,7 @@ if (isset($_POST["btnSubmit"])) {
     $docType = htmlentities($_POST["txtDocumentType"],ENT_QUOTES,"UTF-8");
     $docWordCount = htmlentities($_POST["numDocumentWordCount"],ENT_QUOTES,"UTF-8");
     $dateRequired = htmlentities($_POST["datepicker"],ENT_QUOTES,"UTF-8");
-    $docUpload = htmlentities($_POST[""],ENT_QUOTES,"UTF-8");
+    $docUpload = htmlentities($_POST["file"],ENT_QUOTES,"UTF-8");
 
     $comment = htmlentities($_POST["txtComment"],ENT_QUOTES,"UTF-8");
 
@@ -142,6 +142,7 @@ if (isset($_POST["btnSubmit"])) {
 
     if (!$errorMsg) {
         if ($debug) print "<p>Form is valid</p>";
+ 
 
 //############################################################################
 //
@@ -189,6 +190,33 @@ $timestamp=$date->format('Y-m-d H:i:s');
             $errorMsg[] = "There was a problem with accpeting your data please contact us directly.";
         }
 
+//############################################################################
+//
+// File upload
+//
+
+    $temp = explode(".", $_FILES["file"]["name"]);
+    $extension = end($temp);
+      {
+      if ($_FILES["file"]["error"] > 0) {
+        if ($debug) { echo "Return Code: " . $_FILES["file"]["error"] . "<br>";}
+        $output="<p>There was a problem submitting your file</p>";
+      } else {
+        if ($debug) {
+            echo "<p>Upload: " . $_FILES["file"]["name"] . "<br>";
+            echo "Type: " . $_FILES["file"]["type"] . "<br>";
+            echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
+            echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br>";
+        }
+
+        if (file_exists("upload/" . $_FILES["file"]["name"])){
+          $output= $_FILES["file"]["name"] . " already exists. ";
+        }else{
+          move_uploaded_file($_FILES["file"]["tmp_name"],"upload/" . $_FILES["file"]["name"]);
+          $output="<p>File Stored in: " . "upload/" . $_FILES["file"]["name"];
+          }
+        }
+      }
 
         // If the transaction was successful, give success message
         if ($dataEntered) {
@@ -248,13 +276,12 @@ $timestamp=$date->format('Y-m-d H:i:s');
 
             echo "been processed</h2>";
 
-            print "<p>A copy of this message has ";
+            print "<p>A message has ";
             if (!$mailed) {
                 echo "not ";
             }
             print "been sent to: " . $email . "</p>";
 
-            echo $messageA . $messageB;
         } else {
 
 
@@ -273,13 +300,12 @@ $timestamp=$date->format('Y-m-d H:i:s');
                 echo "</ol>\n";
             }
 
+
+
             print '</div>';
             ?>
-
-            <form action="<? print $_SERVER['PHP_SELF']; ?>"
-                  enctype="multipart/form-data"
-                  method="post" id="translation">
-
+    <div class="container">
+    <form action="<? print $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data" method="post" id="translation">
     <legend>Request a Free Quote</legend>
     <fieldset>
       <legend>Step 1: Identification</legend>
@@ -435,9 +461,9 @@ $timestamp=$date->format('Y-m-d H:i:s');
       <input type="date" id="datepicker" name="datepicker" placeholder="YYYY-MM-DD">
       <br>
 
-      <label for="uplDocUpload">Upload (optional)</label>
-<!--      <input type="file" id="uplDocUpload" name="uplDocUpload">  -->
-      accepted formats: .pdf, .doc, .docx, .rtf, .txt, .pub
+      <label for="file">Upload (optional)</label>
+      <input type="file" id="file" name="file">
+      accepted formats: .pdf, .doc, .docx, .rtf, .txt
       <br>
 
     </fieldset>
@@ -454,7 +480,8 @@ $timestamp=$date->format('Y-m-d H:i:s');
        <input type="reset" id="btnReset" name="btnReset" value="Reset Form" class="button" onclick="reSetForm()" >
     </fieldset>
 
-            </form>
+    </form>
+    </div>
             <?php
         } // end body submit
         if ($debug)
