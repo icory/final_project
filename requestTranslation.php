@@ -19,7 +19,7 @@
 // Initialize variables
 //  
 
-$debug = true;
+$debug = false;
 if ($debug) print "<p>DEBUG MODE IS ON</p>";
 
 $baseURL = "http://www.uvm.edu/~icory/";
@@ -73,9 +73,9 @@ $messageC = "";
 if (isset($_POST["btnSubmit"])) {
     $fromPage = getenv("http_referer");
 
-    if ($debug)
+    if ($debug) {
         print "<p>From: " . $fromPage . " should match ";
-        print "<p>Your: " . $yourURL;
+        print "<p>Your: " . $yourURL; }
 
     if ($fromPage != $yourURL) {
         die("<p>Sorry you cannot access this page. Security breach detected and reported.</p>");
@@ -268,7 +268,7 @@ $timestamp=$date->format('Y-m-d H:i:s');
 //  display the form.
 //
         if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) {
-            print "<h2>Your Request has ";
+            print "<h2>Your request has ";
 
             if (!$mailed) {
                 echo "not ";
