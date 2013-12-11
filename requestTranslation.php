@@ -458,7 +458,7 @@ $timestamp=$date->format('Y-m-d H:i:s');
       <br>
 
       <label for="datepicker">Date Required</label>
-      <input type="date" id="datepicker" name="datepicker" placeholder="YYYY-MM-DD">
+      <input type="date" id="datepicker" name="datepicker" placeholder="yyyy-mm-dd">
       <br>
 
       <label for="file">Upload (optional)</label>
