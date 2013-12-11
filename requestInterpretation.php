@@ -259,7 +259,7 @@ $timestamp=$date->format('Y-m-d H:i:s');
 //  display the form.
 //
         if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) {
-            print "<h2>Your Request has ";
+            print "<h2>Your request has ";
 
             if (!$mailed) {
                 echo "not ";
@@ -273,7 +273,6 @@ $timestamp=$date->format('Y-m-d H:i:s');
             }
             print "been sent to: " . $email . "</p>";
 
-            echo $messageA . $messageB;
         } else {
 
 
@@ -664,14 +663,13 @@ $timestamp=$date->format('Y-m-d H:i:s');
     </fieldset>
 
     </form>
-    </div>
             <?php
         } // end body submit
         if ($debug)
             print "<p>END OF PROCESSING</p>";
         ?>
     </section>
-
+    </div>
 
     <?
     include ("footer.php");
