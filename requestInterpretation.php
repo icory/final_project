@@ -240,6 +240,7 @@ $timestamp=$date->format('Y-m-d H:i:s');
     include ("header.php");
     ?>
 
+<div class="container">
 <section>
   <a href="requestServices.php">Request Services</a>
   >
@@ -663,6 +664,7 @@ $timestamp=$date->format('Y-m-d H:i:s');
     </fieldset>
 
     </form>
+    </div>
             <?php
         } // end body submit
         if ($debug)
